@@ -1,2 +1,2 @@
 # Project-Restaurant-Page
-Practicing dynamic DOM manipulation by ES6 Modules and Webpack
+Practicing dynamic DOM manipulation through ES6 Modules and Webpack

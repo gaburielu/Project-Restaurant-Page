@@ -10,16 +10,18 @@
 
 body {
   background-image: url("./asset/background.jpg");
-  width: 98vw;
+  width: 100vw;
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
+  font-family: "palamecia-titling.regular";
 }
 
 #content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 #title {
@@ -60,11 +62,49 @@ body {
   background-color: rgba(255, 94, 1, 0.6);
 }
 
-#container {
-  font-size: clamp;
-  width: 60%;
-  font-family: "Merriweather-Bold";
+.container {
+  font-size: clamp(12%, 20px, 6vw);
+  width: clamp(20%, 60%, 80vw);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: clamp(25px, 10vh, 50px);
 }
+
+/* HOME PAGE START*/
+
+.homeDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hero-img {
+  width: clamp(200px, 80%, 800vw);
+  height: auto;
+  align-self: center;
+  border-radius: 12px;
+  border: 5px rgb(48, 6, 6) solid;
+}
+
+.hero-header {
+  font-size: clamp(25%, 50px, 10vw);
+  text-align: center;
+}
+
+.hero-description {
+  font-size: large;
+  padding: 10px;
+  text-align: justify;
+}
+
+/* HOME PAGE END*/
+/* MENU PAGE START */
+
+/* MENU PAGE END */
+/* ABOUT PAGE START */
+
+/* ABOUT PAGE END */
 
 #footer {
   height: 50px;

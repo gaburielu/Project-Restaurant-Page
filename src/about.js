@@ -1,8 +1,10 @@
-function fob(){
+import "./style.css";
+
+function about(){
     console.log("about is ok");
 }
 
-export {fob}
+export {about}
 
 // Image by <a href="https://www.freepik.com/free-photo/delicious-ramen-with-chopsticks-arrangement_65550417.htm#query=food%20cartoon&position=17&from_view=search&track=ais&uuid=d33ec93b-e1fb-425d-ac89-06bff40e18a9">Freepik</a>
 // <a href="https://www.freepik.com/icon/ice-cream_6108862#fromView=resource_detail&position=3">Icon by Freepik</a>

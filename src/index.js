@@ -1,11 +1,12 @@
 import "./style.css";
 import "./normalize.css";
 import { renderMenu } from "./menu";
-import { about } from "./about";
-import home from "./home";
+import { renderAbout } from "./about";
+import renderHome from "./home";
 
 const content = document.getElementById("content");
-let pages = "menu";
+const container = document.querySelector(".container");
+let pages = "home";
 
 const title = document.createElement("h1");
 title.id = "title";
@@ -22,45 +23,75 @@ navItems.forEach((item) => {
   navItem.classList.add("nav-item");
   navItem.id = `${item.toLowerCase()}Nav`;
   navItem.textContent = item;
+  navItem.onclick = function () {
+    console.log("Clicked on:", item.toLowerCase());
+    changePage(item.toLowerCase());
+    renderPage(pages);
+  };
   nav.appendChild(navItem);
 });
 
 content.appendChild(nav);
 
-// const card = document.createElement("div");
-// card.classList.add("card");
-// card.textContent = "fly you fools";
-// body.appendChild(card);
-
-
-
-about();
-
-function createFooter() {
-  const footer = document.createElement("div");
+function changePage(newPage) {
+  pages = newPage;
 }
 
-function clearContainer() {}
+function clearContainer(container) {
+  if (container) {
+    const navElement = container.querySelector("#navbar");
+
+    if (navElement) {
+      while (navElement.nextElementSibling) {
+        container.removeChild(navElement.nextElementSibling);
+      }
+    } else {
+      console.warn("Nav element not found in the container");
+    }
+  } else {
+    console.warn("Container is null or undefined");
+  }
+}
 
 function clearClass() {
-  navbar.querySelectorAll("div").forEach((childDiv) => {
-    childDiv.classList.remove("Active");
+  nav.querySelectorAll("div").forEach((childDiv) => {
+    childDiv.classList.remove("active");
   });
 }
 
 function renderPage(pages) {
+  console.log("Rendering page:", pages);
+
   if (pages == "menu") {
-    clearClass();
-    menuNav.classList.add("active");
-    renderMenu();
+    if (!menuNav.classList.contains("active")) {
+      clearClass();
+      clearContainer(content);
+
+      menuNav.classList.add("active");
+      console.log("Rendering Menu");
+      renderMenu();
+    }
   } else if (pages == "about") {
-    clearClass();
-    aboutNav.classList.add("active");
-  } else {
-    clearClass();
-    homeNav.classList.add("active");
-    home();
+    if (!aboutNav.classList.contains("active")) {
+      clearClass();
+      clearContainer(content);
+
+      aboutNav.classList.add("active");
+      console.log("Rendering About");
+      renderAbout();
+    }
+  } else if (pages == "home") {
+    if (!homeNav.classList.contains("active")) {
+      clearClass();
+      clearContainer(content);
+
+      homeNav.classList.add("active");
+      console.log("Rendering Home");
+      renderHome();
+    }
   }
+
+  console.log("Page rendered successfully");
 }
 
 renderPage(pages);

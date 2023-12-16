@@ -7,8 +7,11 @@ import juiceIcon from "./asset/cocktail_6108766.png";
 import lemonadeIcon from "./asset/tea_6108846.png";
 
 const body = document.getElementById("content");
-const container = document.createElement('div');
-container.classList.add('container');
+const container = document.createElement("div");
+let menuRenderCount = 0;
+container.classList.add("container");
+
+container.id = "container";
 let menuList = [];
 
 class dish {
@@ -64,32 +67,40 @@ menuList.push(juice);
 menuList.push(lemonade);
 
 function renderMenu() {
-  menuList.forEach((dish) => {
-    const card = document.createElement("div");
-    card.classList.add("menu-card");
+  if (menuRenderCount === 0) {
+    menuList.forEach((dish) => {
+      const card = document.createElement("div");
+      card.classList.add("menu-card");
 
-    const icon = document.createElement("img");
-    icon.src = dish.icon;
-    icon.alt = dish.name + " icon";
-    icon.classList.add("dish-icon");
+      const icon = document.createElement("img");
+      icon.src = dish.icon;
+      icon.alt = dish.name + " icon";
+      icon.classList.add("dish-icon");
 
-    const title = document.createElement("h3");
-    title.textContent = dish.name;
+      const title = document.createElement("h2");
+      title.textContent = dish.name;
+      title.classList.add("dish-title");
 
-    const price = document.createElement("h3");
-    price.textContent = "$" + dish.price;
+      const price = document.createElement("h2");
+      price.textContent = "$" + dish.price;
+      price.classList.add("dish-price");
 
-    const description = document.createElement("p");
-    description.textContent = dish.description;
+      const description = document.createElement("p");
+      description.textContent = dish.description;
+      description.classList.add("dish-description");
 
-    card.append(icon);
-    card.append(title);
-    card.append(price);
-    card.append(description);
+      card.append(icon);
+      card.append(title);
+      card.append(price);
+      card.append(description);
 
-    container.appendChild(card);
+      container.appendChild(card);
+      body.appendChild(container);
+      menuRenderCount++;
+    });
+  } else {
     body.appendChild(container);
-  });
+  }
 }
 
 export { renderMenu };
